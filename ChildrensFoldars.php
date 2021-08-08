@@ -15,12 +15,10 @@
 </div>
 
 
-
   <h1>Childrens Foldars</h1>
   <div>
 
-    <?php
-
+<?php
     require_once 'connect.php';
 
     $sql = "select * from children";
