@@ -41,7 +41,7 @@
 
         <tr>
           <td> <?php echo $row["CFirstName"] . "&nbsp; &nbsp;" . $row["CLastName"] ?> </td>
-          <td> <a class="btn btn-info" href="CView.php?Cid=<?php echo $row['Cid']; ?>"> View </a> </td>
+          <td> <a class="btn btn-info" href="CView.php?Cid=<?php echo $row['Cid'];?>"> View </a> </td>
         </tr>
           
         <?php }
