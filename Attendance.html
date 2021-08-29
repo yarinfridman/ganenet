@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ganenet - Attendance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+  <!-- Load Require CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font CSS -->
+  <link href="assets/css/boxicon.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Load Tempalte CSS -->
+  <link rel="stylesheet" href="assets/css/templatemo.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <header id="header"></header>
+  <form method="get">
+    <!-- Start Banner Hero -->
+    <div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
+      <div
+        class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+        <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+          <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">Attendance Management</h1>
+          <h3 class="h5 pb-2 regular-400">pick a day to view and update the attendance</h3>
+          <input type="date" id="start" name="PickDate" required><br><br>
+          <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300" formaction="APickDate.php">Show</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- End Banner Hero -->
+
+
+  <!-- End table -->
+  <footer id="footer"></footer>
+
+  <!-- Bootstrap -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Lightbox -->
+  <script src="assets/js/fslightbox.js"></script>
+  <!-- Load jQuery require for isotope -->
+  <script src="assets/js/jquery.min.js"></script>
+  <!-- Isotope -->
+  <script src="assets/js/isotope.pkgd.js"></script>
+  <!-- Page Script -->
+  <script>
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+  </script>
+
+  <!-- Templatemo -->
+  <script src="assets/js/templatemo.js"></script>
+  <!-- Custom -->
+  <script src="assets/js/custom.js"></script>
+  <script>$(".btn-info").click(function () {
+      //$(this).removeClass('btn-info');
+      $(this).toggleClass('btn-success');
+      $(this).toggleClass('btn-info');
+    });</script>
+
+</body>
+
+</html>

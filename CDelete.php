@@ -15,8 +15,7 @@ if (isset($_GET['Cid'])) {
 
     $result = $conn->query($sqlA);
     
-
-    echo "<script>location.href='ChildrensFoldars.php'</script>";
+    echo "<script>location.href='childrenList.php'</script>";
 }
 
 ?>

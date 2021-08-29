@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ganenet - Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <!-- Load Require CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Load Tempalte CSS -->
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+</head>
+
+<body>
+    <header id="header"></header>
+    <section class="container py-5">
+
+        <div class="service-tag py-5 bg-secondary">
+            <div class="col-md-12">
+                <ul class="nav d-flex justify-content-center">
+                  <!--   <li class="nav-item mx-lg-4">
+                        <a class="filter-btn nav-link btn-outline-primary active shadow rounded-pill text-light px-4 light-300" href="#" data-filter=".project">All</a>
+                    </li>-->
+                    <li class="nav-item mx-lg-4">
+                        <a class="filter-btn nav-link btn-outline-primary  rounded-pill text-light px-4 light-300" data-filter=".Counting" >Counting</a>                        
+                    </li>
+                    <li class="filter-btn nav-item mx-lg-4">
+                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" data-filter=".Reading">Reading</a>
+                    </li>
+                    <li class="nav-item mx-lg-4">
+                        <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" data-filter=".Selfplaying">Self playing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+    </section>
+    
+    <section class="container overflow-hidden py-5">
+        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+    
+            
+            <!-- start counting -->
+    
+            <div class="col-md-4 mb-3 project ui Counting" data-bs-toggle="modal" data-bs-target="#counting1" data-bs-toggle="modal">
+                <div  class="notPerforming-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Are not counting</h4>
+                </div>
+            </div>
+      
+            <div class="col-md-4 mb-3 project ui Counting" data-bs-toggle="modal" data-bs-target="#counting2" data-bs-toggle="modal">
+                <div  class="withHelp-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">counting with help</h4>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-3 project ui Counting" data-bs-toggle="modal" data-bs-target="#counting3" data-bs-toggle="modal">
+                <div  class="alone-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">counting alone</h4>
+                </div>
+            </div>
+    
+            <!-- start reading -->
+    
+            <div class="col-md-4 mb-3 project ui Reading" data-bs-toggle="modal" data-bs-target="#reading1" data-bs-toggle="modal">
+                <div  class="notPerforming-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Are not Reading</h4>
+                </div>
+            </div>
+      
+            <div class="col-md-4 mb-3 project ui Reading" data-bs-toggle="modal" data-bs-target="#reading2" data-bs-toggle="modal">
+                <div  class="withHelp-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Reading with help</h4>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-3 project ui Reading" data-bs-toggle="modal" data-bs-target="#reading3" data-bs-toggle="modal">
+                <div  class="alone-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Reading alone</h4>
+                </div>
+            </div>
+    
+    
+            <!-- start Self playing -->
+    
+            <div class="col-md-4 mb-3 project ui Selfplaying" data-bs-toggle="modal" data-bs-target="#selfplay1" data-bs-toggle="modal">
+                <div  class="notPerforming-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Are not Self playing</h4>
+                </div>
+            </div>
+      
+            <div class="col-md-4 mb-3 project ui Selfplaying" data-bs-toggle="modal" data-bs-target="#selfplay2" data-bs-toggle="modal">
+                <div  class="withHelp-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Self playing with help</h4>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-3 project ui Selfplaying" data-bs-toggle="modal" data-bs-target="#selfplay3" data-bs-toggle="modal">
+                <div  class="alone-wap py-5">
+                   <h3  class="card-title light-300">45</h3>
+                   <h4  class="card-title light-300">Self playing alone</h4>
+                </div>
+            </div>
+    
+    
+        </div>
+    </section>
+    
+
+
+
+
+
+
+    <footer id="footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+     <div class="collapse navbar-collapse" id="navbarResponsive">
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" >Counting
+					<span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active">Reading</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Self playing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+    $(window).load(function() {
+        // init Isotope
+        var $projects = $('.projects').isotope({
+            itemSelector: '.project',
+            layoutMode: 'fitRows'
+        });
+        
+        $(".filter-btn").click(function() {
+            var data_filter = $(this).attr("data-filter");
+            $projects.isotope({
+                filter: data_filter
+            });
+            $(".filter-btn").removeClass("active");
+            $(".filter-btn").removeClass("shadow");
+            $(this).addClass("active");
+            $(this).addClass("shadow");
+            return false;
+        });
+    });
+</script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox -->
+    <script src="assets/js/fslightbox.js"></script>
+    <!-- Load jQuery require for isotope -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Isotope -->
+    <script src="assets/js/isotope.pkgd.js"></script>
+    <!-- Page Script -->
+    <script>
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+    </script>
+
+    <!-- Templatemo -->
+    <script src="assets/js/templatemo.js"></script>
+    <!-- Custom -->
+    <script src="assets/js/custom.js"></script>
+    <script>$( ".btn-info" ).click(function() {
+        //$(this).removeClass('btn-info');
+        $(this).toggleClass('btn-success');
+        $(this).toggleClass('btn-info');
+      });</script>
+
+</body>
+
+</html>

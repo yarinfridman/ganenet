@@ -46,7 +46,7 @@ $insert_sql_A = "INSERT INTO attending (Cid) VALUES(
     )";
 $result = $conn->query($insert_sql_A);
 
-echo "<script>location.href='ChildrensFoldars.php'</script>";
+echo "<script>location.href='childrenList.php'</script>";
 
 
 ?>

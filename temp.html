@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ganenet - Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <!-- Load Require CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Load Tempalte CSS -->
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+</head>
+
+<body>
+    <header id="header"></header>
+    <section class="container py-5">
+        <div class="container">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th scope="col"><br> Date</th>
+                        <th scope="col"><br> Weather</th>
+                        <th scope="col"><br> Events</th>
+                    </tr>
+                </thead>
+                <?php for ($i = 0; $i <= sizeof($weatherArray['daily']) - 1; $i++) {
+                    $date = date("Y-m-d", $weatherArray['daily'][$i]['dt']);
+                    $day = date("l", $weatherArray['daily'][$i]['dt']);
+                    $temp = round($weatherArray['daily'][$i]['temp']['day'] - 273.15);
+                    $des = $weatherArray['daily'][$i]['weather'][0]['description'];
+                    $icon = $weatherArray['daily'][$i]['weather'][0]['icon'];
+                    $iconImg = "http://openweathermap.org/img/wn/$icon@2x.png";
+
+                ?>
+                    <tbody>
+                        <tr>
+                            <td> <?php echo $date ?> <br> <?php echo $day ?> </td>
+                            <td> <img src="<?php echo $iconImg ?>" alt="icon img"> <br>
+                                <?php echo $des ?> <br> <?php echo $temp ?>°C </td>
+                            <td>
+                                <?php
+                                require_once "connect.php";
+                                $sql = "SELECT * FROM `Events` WHERE `EDate` = '$date'";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                        <?php echo $row["EName"]?>
+                             <?php } 
+                                } else {echo "No events today";} ?></td>
+                        </tr>
+                    </tbody>
+                <?php } ?>
+            </table>
+
+            <!-- Start  Horizontal -->
+            <div class="events-horizontal row col-12 m-auto d-flex shadow-sm rounded overflow-hidden bg-white">
+                <div class="events-horizontal-icon col-md-3 text-center bg-secondary text-light py-4">
+                    <h5 class="h5 semi-bold-600 pb-4 light-300"> <img src="<?php echo $iconImg ?>" alt="icon img"> <br> 
+                        <?php echo $des ?> <br> <?php echo $temp ?>°C </h5>
+                </div>
+                <div class="events-horizontal-body offset-lg-1 col-md-5 col-lg-4 d-flex align-items-center pl-5 pt-lg-0 pt-4">
+                    <ul class="text-left px-4 list-unstyled mb-0 light-300">
+                        <h2 class="h3 pb-4 typo-space-line">event on <?php echo $day ?> <?php echo $date ?></h2>
+                        <?php
+                                require_once "connect.php";
+                                $sql = "SELECT * FROM `Events` WHERE `EDate` = '$date'";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) { ?>
+                                        <?php echo $row["EName"]?>
+                             <?php } 
+                                } else {echo "No events today";} ?>
+                        <br>
+                    </ul>
+                </div>
+            </div>
+            <!-- End  Horizontal -->
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <footer id="footer"></footer>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox -->
+    <script src="assets/js/fslightbox.js"></script>
+    <!-- Load jQuery require for isotope -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Isotope -->
+    <script src="assets/js/isotope.pkgd.js"></script>
+    <!-- Page Script -->
+    <script>
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+    </script>
+
+    <!-- Templatemo -->
+    <script src="assets/js/templatemo.js"></script>
+    <!-- Custom -->
+    <script src="assets/js/custom.js"></script>
+    <script>$( ".btn-info" ).click(function() {
+        //$(this).removeClass('btn-info');
+        $(this).toggleClass('btn-success');
+        $(this).toggleClass('btn-info');
+      });</script>
+
+</body>
+
+</html>
