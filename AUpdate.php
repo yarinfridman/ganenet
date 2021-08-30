@@ -2,9 +2,28 @@
 
   <?php
 
+    include "connect.php";
+
+    function createRange($startDate, $endDate)
+    {
+        $tmpDate = new DateTime($startDate);
+        $tmpEndDate = new DateTime($endDate);
+
+        $outArray = array();
+        do {
+            $outArray[] = $tmpDate->format('Y-m-d');
+        } while ($tmpDate->modify('+1 day') <= $tmpEndDate);
+
+        return $outArray;
+    }
+
+    
+    $EDate = date("Y-m-d");
+    $SDate = date("Y-m-d", strtotime('-1 months', strtotime($EDate)));
+    $dates = createRange($SDate, $EDate);
 
     $results = array(
-        array([], [], [])
+        array([], [], [], [])
     );
 
     $results[0][2] = "hey";
@@ -28,27 +47,13 @@
         for ($i = 0; $i <= sizeof($_POST['Cids']) - 1; $i++) {
             $DateStatus = $_POST['CurrentPicks'][$i];
             $value = $_POST['Cids'][$i];
+            echo $value;
             $results[$i][0] = $value; //השמת ת.ז ברשימת התוצאות
             $sql3 = ("UPDATE `attending` SET `$DateToEdit`='$DateStatus' WHERE `Cid`='$value'");
             $result = $conn->query($sql3);
 
             if ($DateStatus != "Not entered") {
-                function createRange($startDate, $endDate)
-                {
-                    $tmpDate = new DateTime($startDate);
-                    $tmpEndDate = new DateTime($endDate);
 
-                    $outArray = array();
-                    do {
-                        $outArray[] = $tmpDate->format('Y-m-d');
-                    } while ($tmpDate->modify('+1 day') <= $tmpEndDate);
-
-                    return $outArray;
-                }
-
-                $EDate = date("Y-m-d");
-                $SDate = date("Y-m-d", strtotime('-1 months', strtotime($EDate)));
-                $dates = createRange($SDate, $EDate);
                 $Cid = $value;
 
 
@@ -94,15 +99,19 @@
                     $NotarrivePerCent = $SNotArrive / ($SArrive + $SNotArrive);
                     $arrivePerCent = round($arrivePerCent * 100);
                     $results[$i][2] = $NotarrivePerCent = round($NotarrivePerCent * 100);
+                    $results[$i][3] = $SArrive + $SNotArrive;
                 }
             }
         }
+        
         //בדיקה האם להעביר מיד לדף הנוכחות [אמת] או להציג את ההתראות
         $Alert = true;
 
+        print_r($results);
+
         for ($i = 0; $i <= sizeof($_POST['Cids']) - 1; $i++) {
 
-            if ($results[$i][2] < 50) {
+            if ($results[$i][2] > 50 &&  $results[$i][3] > 10) {
                 $Alert = false;
                 $OutPutCid = $results[$i][0];
                 $sql1 = "SELECT * FROM `children` WHERE `Cid`='$OutPutCid'";
@@ -124,7 +133,7 @@
 
         } else {
 
-            echo "<script>location.href='Attendance.html'</script>";
+            //echo "<script>location.href='Attendance.html'</script>";
         }
     }
     ?>

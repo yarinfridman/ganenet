@@ -94,14 +94,15 @@
                                 <div class="w-100 light-300">
                                     <form method="post">
                                         <input type="hidden" class="form-control" name="ECounter" value="<?php echo $row["ECounter"] ?>"></li>
-                                        <button type="button" class="btn rounded-pill btn-secondary text-light px-4 light-300 addEventButton" data-bs-toggle="modal" data-bs-target="#exampleModal2" name="EUpdate">Update</button>
                                         <button type="submit" name="EDelete" class="btn rounded-pill btn-secondary text-light px-4 light-300 addEventButton">Delete</button> <br>
                                     </form>
+                                    <a type="button" class="btn rounded-pill btn-secondary text-light px-4 light-300 addEventButton" href="EUpdateForm.php?ECounter=<?php echo $row["ECounter"] ?>"> Update</a>
+                            
                                 </div>
                             </div>
                         </div>
                         <br>
-
+                        
                 <?php
                     }
                 }
@@ -170,82 +171,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
-
-
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <?php if (isset($_GET['EUpdate'])) {
-
-                        $ECounter = $_GET['ECounter'];
-                        $sql1 = "SELECT * FROM `Events` WHERE `ECounter` = '$ECounter'";
-
-                        $result = $conn->query($sql1);
-
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) { ?>
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="contact-form row" method="post" role="form">
-                                        <div class>
-                                            <h4>Name of the event</h4>
-                                            <input type="text" class="form-control form-control-lg light-300" name="EName" value="<?php echo $row["EName"] ?>" required>
-                                        </div><!-- End Input Name -->
-
-                                        <div class>
-                                            <h4>Date</h4>
-                                            <input type="date" class="form-control form-control-lg light-300" name="EDate" value="<?php echo $row["EDate"] ?>" required>
-                                        </div><!-- End Input Date -->
-
-                                        <div class>
-                                            <h4>Start hour</h4>
-                                            <input type="time" class="form-control form-control-lg light-300" name="ETime" value="<?php echo $row["ETime"] ?>" required>
-                                        </div><!-- End Input hour -->
-
-
-                                        <div class>
-                                            <h4>location</h4>
-                                            <input type="text" class="form-control form-control-lg light-300" name="ELocation" value="<?php echo $row["ELocation"] ?>" required>
-                                            <input type="hidden" class="form-control" name="ECounter" value="<?php echo $row["ECounter"] ?>" required></li>
-                                        </div>
-
-                                        <!-- End Input location -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" name="EUpdate2" class="btn btn-primary">Update</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </form>
-                                </div>
-
-                </div>
-
-
-    <?php
-                            }
-                        }
-                    } ?>
-            </div>
-        </div>
-
-        <?php
-        if (isset($_POST['EUpdate2'])) {
-
-            $ECounter = ($_POST['ECounter']);
-            $EDate = ($_POST['EDate']);
-            $ETime = ($_POST['ETime']);
-            $EName = ($_POST['EName']);
-            $ELocation = ($_POST['ELocation']);
-            $sql2 = ("UPDATE `Events` SET `EDate`='$EDate', `ETime`=' $ETime', `EName`='$EName', `ELocation`='$ELocation' WHERE `ECounter` = '$ECounter'");
-            $result = $conn->query($sql2);
-            echo "<script>location.href='Events.php'</script>";
-        }
-
-
-        ?>
 
 
         <!-- Bootstrap -->

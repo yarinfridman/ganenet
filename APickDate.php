@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form method="POST">
+                    <form method="POST" action="AbsentAlert.php">
                         <?php
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
@@ -109,18 +109,18 @@
             </form>
 
             <?php
-            if (isset($_POST['Update'])) {
+            //if (isset($_POST['Update'])) {
 
-                $DateToEdit = strval($_POST['DateToEdit']);
-                for ($i = 0; $i <= sizeof($_POST['Cids']) - 1; $i++) {
-                    $DateStatus = $_POST['CurrentPicks'][$i];
-                    $value = $_POST['Cids'][$i];
-                    $sql3 = ("UPDATE `attending` SET `$DateToEdit`='$DateStatus' WHERE `Cid`='$value'");
-                    $result = $conn->query($sql3);
-                }
+            //    $DateToEdit = strval($_POST['DateToEdit']);
+            //     for ($i = 0; $i <= sizeof($_POST['Cids']) - 1; $i++) {
+            //         $DateStatus = $_POST['CurrentPicks'][$i];
+            //        $value = $_POST['Cids'][$i];
+            //         $sql3 = ("UPDATE `attending` SET `$DateToEdit`='$DateStatus' WHERE `Cid`='$value'");
+            //         $result = $conn->query($sql3);
+            //     }
 
-                echo "<script>location.href='Attendance.html'</script>";
-            }
+            //     echo "<script>location.href='Attendance.html'</script>";
+            //  }
 
             ?>
 

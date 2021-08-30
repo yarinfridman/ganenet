@@ -49,7 +49,7 @@
     <div class="row d-flex align-items-center pb-5">
 
       <div class="col-lg-6 offset-lg-0 col-md-8 offset-md-2">
-        <img class="rounded float-right" src="./assets/img/banner-img-03.png">
+        <img class="rounded float-right img-fluid " src="./assets/img/banner-img-03.png">
       </div>
 
       <div class="col-lg-6">
@@ -275,7 +275,7 @@
     <div class="center container py-4 ">
       <h3 class="semi-bold-600 text-center mt-2">Enter child and date range to view child attendance data</h3>
       <br>
-      <form class="contact-form row" method="post" role="form">
+      <form class="contact-form row" action="Dash.php#down" method="post" role="form">
 
         <!--first name input -->
         <?php $sql = "SELECT * FROM children";
@@ -292,19 +292,32 @@
               while ($row = $result->fetch_assoc()) {
             ?>
                 <option value="<?php echo $row["Cid"] ?>"> <?php echo $row["CFirstName"] . "&nbsp;" . $row["CLastName"] ?> </option>
-               
+
 
             <?php  }
             } ?>
           </select>
         </div>
 
+        <div class="col-lg-4 mb-4">
+          <h4>Fast Selections</h4>
+          <a type="button" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Last week</a>
+          <a type="button" onclick="SetDate()" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Last month</a>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+
+        </div>
+
+
         <!--Date of start input -->
 
         <div class="col-lg-4">
           <h4>Start date</h4>
           <div>
-            <input type="Date" class="form-control form-control-lg light-300" name="SDate" required>
+            <input type="Date" id="LastM" class="form-control form-control-lg light-300" name="SDate" required>
+            <input type="text" id="my" class="form-control form-control-lg light-300" name="SDate" required>
+
           </div>
         </div>
 
@@ -313,7 +326,7 @@
         <div class="col-lg-4">
           <h4>End date</h4>
           <div>
-            <input type="Date" class="form-control form-control-lg light-300" name="EDate" required>
+            <input type="Date" id="Today" class="form-control form-control-lg light-300" name="EDate" required>
           </div>
         </div>
 
@@ -325,6 +338,8 @@
       </form>
     </div>
   </section>
+
+
 
 
   <!--Start of design output -->
@@ -387,7 +402,7 @@
         $arrivePerCent = round($arrivePerCent * 100);
         $NotarrivePerCent = round($NotarrivePerCent * 100);
       ?>
-        <div class="overview shadow-sm rounded-top rounded-3 py-sm-0 outputResults">
+        <div class="overview shadow-sm rounded-top rounded-3 py-sm-0 outputResults" id="outputResults">
           <div class="pl-3 pt-2">
             <h3 class="semi-bold-600 text-center mt-2">Results for: <?php echo $_POST['SDate'] . "-" . $_POST['EDate'] ?></h3>
             <br>
@@ -436,14 +451,15 @@
       <?php
       }
     } else {
-      
-      $sql1 ="SELECT * FROM `children` WHERE `Cid`='$Cid'";
+
+      $sql1 = "SELECT * FROM `children` WHERE `Cid`='$Cid'";
       $result1 = $conn->query($sql1);
       if ($result1->num_rows > 0) {
-        while ($row = $result1->fetch_assoc()){
+        while ($row = $result1->fetch_assoc()) {
           $CFName = $row['CFirstName'];
           $CLName = $row['CLastName'];
-        } }
+        }
+      }
 
       foreach ($dates as $date) {
         $dateToExist = strval($date);
@@ -468,7 +484,7 @@
       if ($SArrive == 0 && $SNotArrive == 0) { ?>
         <div class="overview shadow-sm rounded-top rounded-3 py-sm-0 outputResults">
           <div class="pl-3 pt-2">
-            <h3 class="semi-bold-600 text-center mt-2">There are no attendance records for <?php echo $_POST['CName']?> at this date range </h3>
+            <h3 class="semi-bold-600 text-center mt-2">There are no attendance records for <?php echo $_POST['CName'] ?> at this date range </h3>
           </div>
         </div>
       <?php
@@ -521,8 +537,12 @@
                 </div>
               </div>
             </div>
+            <button type="button" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300 resultsdetail" data-bs-toggle="modal" data-bs-target="#AtendaceDetails" data-bs-toggle="modal">Atendace Details </button>
+            <br>
           </div>
         </div>
+
+
   <?php
 
       }
@@ -532,6 +552,52 @@
 
 
   <footer id="footer"></footer>
+
+  <!-- Modal Atendace Details-->
+  <div class="modal fade" id="AtendaceDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-c-blue">
+          <h5 class="modal-title" id="exampleModalLabel">Children who are self playing alone</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">child name</th>
+                <th scope="col">date</th>
+                <th scope="col">status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>child name</td>
+                <td>date</td>
+                <td>status</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>child name</td>
+                <td>date</td>
+                <td>status</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>child name</td>
+                <td>date</td>
+                <td>status</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <!-- Modal Are not counting-->
@@ -836,7 +902,44 @@
       $(this).toggleClass('btn-info');
     });
   </script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("outputResults");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+  <a name="down"></a>
 
 </body>
+
+
+<script type="text/javascript">
+
+function SetDate() {
+ 
+  <?php
+  $EDate = date("Y-M-D");
+  $SDate = date("Y-M-D", strtotime('-1 months', strtotime($EDate)));
+  ?>
+
+  var Edate = "<?php echo $EDate ?>";
+  var Sdate = "<?php echo $EDate ?>";
+
+
+ 
+  document.getElementById("Today").value = Sdate;
+  document.getElementById("LastM").value = Edate;
+  document.getElementById("my").value ="hey";
+  
+
+  
+
+}
+</script>
 
 </html>
