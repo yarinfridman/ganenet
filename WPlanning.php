@@ -59,11 +59,6 @@ $weatherArray = json_decode($apiDate, true);
                     </tbody>
                 <?php } ?>
             </table>
-
-
-
-
-
 </body>
 
 </html>

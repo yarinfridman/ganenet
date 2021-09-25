@@ -13,7 +13,7 @@ $result = $conn->query($insert_sql);
 
 
 
-echo "<script>location.href='EView.php'</script>";
+echo "<script>location.href='Events.php'</script>";
 
 
 ?>

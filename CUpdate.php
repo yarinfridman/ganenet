@@ -6,13 +6,7 @@
     if (isset($_GET['Cid'])) {
 
         $Cid = $_GET['Cid'];
-        echo "GET succes";
-        echo $Cid;
-
-
-
         $CFirstName = $_GET["CFirstName"];
-        echo $CFirstName;
         $CLastName = $_GET["CLastName"];
         $CGender = $_GET["CGender"];
         $CAddress = $_GET["CAddress"];
@@ -29,14 +23,12 @@
         $CCounting = $_GET["CCounting"];
         $CSelfPlaying = $_GET["CSelfPlaying"];
 
-        echo $CSelfPlaying;
 
         $sql = "UPDATE `children` SET `Cid`='$Cid', `CFirstName`='$CFirstName', `CLastName`='$CLastName', `CGender`='$CGender', `CAddress`='$CAddress', `CGroup`='$CGroup', `CComments`='$CComments', `CDateOFBIrth`='$CDateOFBIrth',`P1FirstName`='$P1FirstName', `P1LastName`='$P1LastName', `P1PhoneNum`='$P1PhoneNum',`P2FirstName`='$P2FirstName', `P2LastName`='$P2LastName', `P2PhoneNum`='$P2PhoneNum', `CReading`='$CReading', `CCounting`='$CCounting', `CSelfPlaying`='$CSelfPlaying' WHERE `Cid` = '$Cid'";
 
         $result = $conn->query($sql);
-        echo $result;
     
-        echo "<script>location.href='ChildrensFoldars.php'</script>";
+       echo "<script>location.href='childrenList.php'</script>";
     }
 
     ?>
